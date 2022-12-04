@@ -11,7 +11,7 @@
 <svg width="500" height="400"></svg>
 <script>
         // Load data
-        /*d3.csv("/hci/education.csv")
+        education = d3.csv("/hci/education.csv")
           .row(function(data){
             return {
               stateName: data.stateName,
@@ -27,13 +27,13 @@
           })
           .get(function(data) {
           console.log(data);
-        }); */
-      education = FileAttachment("/hci/education.csv").csv({typed: true})
+        }); 
+//      education = FileAttachment("/hci/education.csv").csv({typed: true})
 
       chart = Scatterplot(education, {
-        x: d => d.mpg,
-        y: d => d.hp,
-        title: d => d.name,
+        x: d => d.avgTeacherStartingSalary,
+        y: d => d.avgSATScore,
+        title: d => d.stateName,
         xLabel: "Average public school teacher starting salary",
         yLabel: "Average SAT scores",
         stroke: "steelblue",
@@ -42,8 +42,8 @@
       })
 
       function Scatterplot(data, {
-  x = data.avgTeacherStartingSalary, // given d in data, returns the (quantitative) x-value
-  y = data.avgSATScore, // given d in data, returns the (quantitative) y-value
+  x = ([x]) => x, // given d in data, returns the (quantitative) x-value
+  y = ([, y]) => y, // given d in data, returns the (quantitative) y-value
   r = 3, // (fixed) radius of dots, in pixels
   title, // given d in data, returns the title
   marginTop = 20, // top margin, in pixels
