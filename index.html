@@ -29,13 +29,8 @@
           console.log(data);
         }); 
 //      education = FileAttachment("/hci/education.csv").csv({typed: true})
-Plot.plot({
-  marks: [
-    Plot.dot(education, {x: "avgTeacherStartingSalary", y: "avgSATScore"}),
-    Plot.text(education, {stateName: "name", x: "avgTeacherStartingSalary", y: "avgSATScore", dy: -8})
-  ]
-})
-/*
+
+
       chart = Scatterplot(education, {
         x: d => d.avgTeacherStartingSalary,
         y: d => d.avgSATScore,
@@ -47,6 +42,13 @@ Plot.plot({
         height: 600
       })
 
+      chart.plot({
+  marks: [
+    Plot.dot(education, {x: "avgTeacherStartingSalary", y: "avgSATScore"}),
+    Plot.text(education, {stateName: "name", x: "avgTeacherStartingSalary", y: "avgSATScore", dy: -8})
+  ]
+})
+/*
       function Scatterplot(data, {
   x = ([x]) => x, // given d in data, returns the (quantitative) x-value
   y = ([, y]) => y, // given d in data, returns the (quantitative) y-value
