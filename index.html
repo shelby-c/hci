@@ -92,7 +92,7 @@
         // Step 7
         svg.append('g')
         .selectAll("dot")
-        .data(dataset1)
+        .data(dataset)
         .enter()
         .append("circle")
         .attr("cx", function (d) { return xScale(d[0]); } )
