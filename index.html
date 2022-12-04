@@ -12,24 +12,24 @@
 <script>
         // Load data
         d3.csv("/hci/education.csv")
-          .row(function(education){
+          .row(function(data){
             return {
-              stateName: education.stateName,
-              avgTeacherStartingSalary: education.avgTeacherStartingSalary,
-              avgSATScore: education.avgSATScore,
-              avgACTScore: education.avgACTScore,
-              NAEPScoreReading: education.NAEPScoreReading,
-              NAEPScoreMath: education.NAEPScoreMath,
-              highschoolGradRate: education.highschoolGradRate,
-              percentCompletingCollege: education.percentCompletingCollege,
-              eduSpendingPerPupil: education.eduSpendingPerPupil
+              stateName: data.stateName,
+              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
+              avgSATScore: data.avgSATScore,
+              avgACTScore: data.avgACTScore,
+              NAEPScoreReading: data.NAEPScoreReading,
+              NAEPScoreMath: data.NAEPScoreMath,
+              highschoolGradRate: data.highschoolGradRate,
+              percentCompletingCollege: data.percentCompletingCollege,
+              eduSpendingPerPupil: data.eduSpendingPerPupil
             } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
           })
           .get(function(data) {
           console.log(data);
         }); 
 
-      chart = Scatterplot(cars, {
+      chart = Scatterplot(data, {
         x: d => d.mpg,
         y: d => d.hp,
         title: d => d.name,
@@ -40,9 +40,9 @@
         height: 600
       })
 
-      function Scatterplot(education, {
-  x = avgTeacherStartingSalary, // given d in data, returns the (quantitative) x-value
-  y = avgSATScore, // given d in data, returns the (quantitative) y-value
+      function Scatterplot(data, {
+  x = data.avgTeacherStartingSalary, // given d in data, returns the (quantitative) x-value
+  y = data.avgSATScore, // given d in data, returns the (quantitative) y-value
   r = 3, // (fixed) radius of dots, in pixels
   title, // given d in data, returns the title
   marginTop = 20, // top margin, in pixels
@@ -73,9 +73,9 @@
   haloWidth = 3 // padding around the labels
 } = {}) {
   // Compute values.
-  const X = d3.map(education, x);
-  const Y = d3.map(education, y);
-  const T = title == null ? null : d3.map(education, title);
+  const X = d3.map(data, x);
+  const Y = d3.map(data, y);
+  const T = title == null ? null : d3.map(data, title);
   const I = d3.range(X.length).filter(i => !isNaN(X[i]) && !isNaN(Y[i]));
 
   // Compute default domains.
