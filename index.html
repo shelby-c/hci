@@ -11,7 +11,7 @@
 <svg width="500" height="400"></svg>
 <script>
         // Load data
-        d3.csv("/education.csv")
+        d3.csv("/hci/education.csv")
           .row(function(education){
             return {
               stateName: education.stateName,
@@ -23,11 +23,11 @@
               highschoolGradRate: education.highschoolGradRate,
               percentCompletingCollege: education.percentCompletingCollege,
               eduSpendingPerPupil: education.eduSpendingPerPupil
-            }
+            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
           })
           .get(function(data) {
           console.log(data);
-        }); // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
+        }); 
 
         // Step 1
         var dataset1 = [
