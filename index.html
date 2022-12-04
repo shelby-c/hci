@@ -12,9 +12,22 @@
 <script>
         // Load data
         d3.csv("/education.csv")
+          .row(function(education){
+            return {
+              stateName: education.stateName,
+              avgTeacherStartingSalary: education.avgTeacherStartingSalary,
+              avgSATScore: education.avgSATScore,
+              avgACTScore: education.avgACTScore,
+              NAEPScoreReading: education.NAEPScoreReading,
+              NAEPScoreMath: education.NAEPScoreMath,
+              highschoolGradRate: education.highschoolGradRate,
+              percentCompletingCollege: education.percentCompletingCollege,
+              eduSpendingPerPupil: education.eduSpendingPerPupil
+            }
+          })
           .get(function(data) {
           console.log(data);
-        });
+        }); // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
 
         // Step 1
         var dataset1 = [
