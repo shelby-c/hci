@@ -10,6 +10,12 @@
 <h1>Education Disparities in America</h1>
 <svg width="500" height="400"></svg>
 <script>
+        // Load data
+        d3.csv("/education.csv")
+          .get(function(data) {
+          console.log(data);
+        });
+
         // Step 1
         var dataset1 = [
         [90, 20], [20, 100], [66, 44],
