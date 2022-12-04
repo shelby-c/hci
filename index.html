@@ -30,7 +30,8 @@
         }); 
 //      education = FileAttachment("/hci/education.csv").csv({typed: true})
 
-
+        console.log(data.avgTeacherStartingSalary)
+        console.log(avgTeacherStartingSalary)
         // Step 1 create a 2D array of tuples (x, y)
         /*var dataset1 = [
         [90, 20], [20, 100], [66, 44],
@@ -39,7 +40,7 @@
         ];*/
         var dataset = [d => d.avgTeacherStartingSalary, d => d.avgSATScore]
 
-        console.log(dataset)
+        
 
         // Step 3
         var svg = d3.select("svg"),
