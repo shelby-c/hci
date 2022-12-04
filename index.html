@@ -29,7 +29,13 @@
           console.log(data);
         }); 
 //      education = FileAttachment("/hci/education.csv").csv({typed: true})
-
+Plot.plot({
+  marks: [
+    Plot.dot(education, {x: "avgTeacherStartingSalary", y: "avgSATScore"}),
+    Plot.text(education, {stateName: "name", x: "avgTeacherStartingSalary", y: "avgSATScore", dy: -8})
+  ]
+})
+/*
       chart = Scatterplot(education, {
         x: d => d.avgTeacherStartingSalary,
         y: d => d.avgSATScore,
@@ -153,9 +159,9 @@
       .attr("r", r);
 
   return svg.node();
-}
+}*/
 
-
+/*
 
         // Step 1
         var dataset1 = [
@@ -222,7 +228,7 @@
         .attr("cy", function (d) { return yScale(d[1]); } )
         .attr("r", 2)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
-        .style("fill", "#CC0000");
+        .style("fill", "#CC0000");*/
   
 </script>
 </body>
