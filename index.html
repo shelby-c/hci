@@ -11,7 +11,7 @@
 <svg width="500" height="400"></svg>
 <script>
         // Load data
-        d3.csv("/hci/education.csv")
+        /*d3.csv("/hci/education.csv")
           .row(function(data){
             return {
               stateName: data.stateName,
@@ -27,9 +27,10 @@
           })
           .get(function(data) {
           console.log(data);
-        }); 
+        }); */
+      education = FileAttachment("/hci/education.csv").csv({typed: true})
 
-      chart = Scatterplot(data, {
+      chart = Scatterplot(education, {
         x: d => d.mpg,
         y: d => d.hp,
         title: d => d.name,
