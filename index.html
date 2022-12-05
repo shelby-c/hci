@@ -7,105 +7,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 </head>
 <body>
-<!--Step 2-->
-<h1>Education Disparities in America</h1>
-<svg width="500" height="400"></svg>
-<script>
-        // Load data
-        education = d3.csv("/hci/education.csv")
-          .row(function(data){
-            return {
-              stateName: data.stateName,
-              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
-              avgSATScore: data.avgSATScore,
-              avgACTScore: data.avgACTScore,
-              NAEPScoreReading: data.NAEPScoreReading,
-              NAEPScoreMath: data.NAEPScoreMath,
-              highschoolGradRate: data.highschoolGradRate,
-              percentCompletingCollege: data.percentCompletingCollege,
-              eduSpendingPerPupil: data.eduSpendingPerPupil
-            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
-          })
-          .get(function(data) {
-          console.log(data);
-        }); 
-//      education = FileAttachment("/hci/education.csv").csv({typed: true})
-
-        console.log(avgTeacherStartingSalary)
-        // Step 1 create a 2D array of tuples (x, y)
-        /*var dataset1 = [
-        [90, 20], [20, 100], [66, 44],
-        [53, 80], [24, 182], [80, 72],
-        [10, 76], [33, 150], [100, 15]
-        ];*/
-        var dataset = [d => d.avgTeacherStartingSalary, d => d.avgSATScore]
-
-        
-
-        // Step 3
-        var svg = d3.select("svg"),
-            margin = 200,
-            width = svg.attr("width") - margin, //300
-            height = svg.attr("height") - margin //200
-
-        // Step 4 
-        var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
-            yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
-            
-        var g = svg.append("g")
-            .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-        // Step 5
-        // Title
-        svg.append('text')
-        .attr('x', width/2 + 100)
-        .attr('y', 100)
-        .attr('text-anchor', 'middle')
-        .style('font-family', 'Helvetica')
-        .style('font-size', 20)
-        .text('Scatter Plot');
-        
-        // X label
-        svg.append('text')
-        .attr('x', width/2 + 100)
-        .attr('y', height - 15 + 150)
-        .attr('text-anchor', 'middle')
-        .style('font-family', 'Helvetica')
-        .style('font-size', 12)
-        .text('Independant');
-        
-        // Y label
-        svg.append('text')
-        .attr('text-anchor', 'middle')
-        .attr('transform', 'translate(60,' + height + ')rotate(-90)')
-        .style('font-family', 'Helvetica')
-        .style('font-size', 12)
-        .text('Dependant');
-
-        // Step 6
-        g.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale));
-        
-        g.append("g")
-         .call(d3.axisLeft(yScale));
-        
-        // Step 7
-        svg.append('g')
-        .selectAll("dot")
-        .data(dataset)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { return xScale(d[0]); } )
-        .attr("cy", function (d) { return yScale(d[1]); } )
-        .attr("r", 2)
-        .attr("transform", "translate(" + 100 + "," + 100 + ")")
-        .style("fill", "#CC0000");
- 
-      </script>
-</body>
-</html>
-
   <div class='tooltip'></div>
   <div class='legend'>
     <div class='right-align'>
@@ -241,9 +142,108 @@
     .duration(500)
     .style("opacity",0);
      });
- 
+  
 
   
   </script>
 </body>
 </html>
+<h1>Education Disparities in America</h1>
+<svg width="500" height="400"></svg>
+<script>
+        // Load data
+        education = d3.csv("/hci/education.csv")
+          .row(function(data){
+            return {
+              stateName: data.stateName,
+              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
+              avgSATScore: data.avgSATScore,
+              avgACTScore: data.avgACTScore,
+              NAEPScoreReading: data.NAEPScoreReading,
+              NAEPScoreMath: data.NAEPScoreMath,
+              highschoolGradRate: data.highschoolGradRate,
+              percentCompletingCollege: data.percentCompletingCollege,
+              eduSpendingPerPupil: data.eduSpendingPerPupil
+            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
+          })
+          .get(function(data) {
+          console.log(data);
+        }); 
+//      education = FileAttachment("/hci/education.csv").csv({typed: true})
+
+        console.log(avgTeacherStartingSalary)
+        // Step 1 create a 2D array of tuples (x, y)
+        /*var dataset1 = [
+        [90, 20], [20, 100], [66, 44],
+        [53, 80], [24, 182], [80, 72],
+        [10, 76], [33, 150], [100, 15]
+        ];*/
+        var dataset = [d => d.avgTeacherStartingSalary, d => d.avgSATScore]
+
+        
+
+        // Step 3
+        var svg = d3.select("svg"),
+            margin = 200,
+            width = svg.attr("width") - margin, //300
+            height = svg.attr("height") - margin //200
+
+        // Step 4 
+        var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
+            yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
+            
+        var g = svg.append("g")
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+        // Step 5
+        // Title
+        svg.append('text')
+        .attr('x', width/2 + 100)
+        .attr('y', 100)
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 20)
+        .text('Scatter Plot');
+        
+        // X label
+        svg.append('text')
+        .attr('x', width/2 + 100)
+        .attr('y', height - 15 + 150)
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 12)
+        .text('Independant');
+        
+        // Y label
+        svg.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('transform', 'translate(60,' + height + ')rotate(-90)')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 12)
+        .text('Dependant');
+
+        // Step 6
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale));
+        
+        g.append("g")
+         .call(d3.axisLeft(yScale));
+        
+        // Step 7
+        svg.append('g')
+        .selectAll("dot")
+        .data(dataset)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) { return xScale(d[0]); } )
+        .attr("cy", function (d) { return yScale(d[1]); } )
+        .attr("r", 2)
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .style("fill", "#CC0000");
+ 
+      </script>
+</body>
+</html>
+
+
