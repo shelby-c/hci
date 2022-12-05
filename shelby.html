@@ -81,7 +81,7 @@
   
   d3.select(".xAxis")
   .append("g")
-  .call(xAxis.ticks(5).tickFormat(d=>'$ '+d))
+  .call(xAxis.ticks(5).tickFormat(d=>'$'+d))
   .selectAll("text")
   .style("font-size","14px");
   
@@ -93,7 +93,7 @@
   
   d3.select(".yAxis")
   .append("g")
-  .call(yAxis.ticks(5).tickFormat(d=>+d))
+  .call(yAxis.ticks(5).tickFormat(d=>'$'+d))
    .selectAll("text")
   .style("font-size","14px");
   
@@ -140,8 +140,8 @@
     
     div.html(
     "State: "+d.stateName+"<br/>"+
-    "Average Teacher Starting Salary%: "+d.avgTeacherStartingSalary+"<br/>"+
-    "Spending per Student: "+d.eduSpendingPerPupil+"<br/>");
+    "Average Teacher Starting Salary: $"+d.avgTeacherStartingSalary+"<br/>"+
+    "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
 
     
     div.style("left",(d3.event.pageX+10) +"px")
