@@ -62,7 +62,7 @@
   
 
   
-  const yDomain=d3.extent(data.map(d=>d.avgSATScore));
+  const yDomain=d3.extent(data.map(d=>d.eduSpendingPerPupil));
   const yRange=[height,0];
   const yScale=d3.scaleLinear()
   .domain(yDomain)
@@ -97,7 +97,7 @@
   
   d3.select(".xAxis")
   .append("text")
-  .text("spending")
+  .text("Average Teacher Starting Salary")
   .attr("x",width/2)
   .attr("y",margin.bottom * 0.7)
   .style("font-size","18px")
@@ -106,7 +106,7 @@
   
   d3.select(".yAxis")
   .append("text")
-  .text("scores")
+  .text("Per Pupil Spending")
   .style("transform","rotate(270deg)")
   .attr("x",height/2 * -1)
   .attr("y",margin.left * 0.6 * -1)
@@ -129,7 +129,7 @@
   .append("circle")
   .attr("class","circle")
   .attr("cx",d=>xScale(d.avgTeacherStartingSalary))
-  .attr("cy",d=>yScale(d.avgSATScore))
+  .attr("cy",d=>yScale(d.eduSpendingPerPupil))
   .attr("r",5)
   .on("mouseover",function(d){
     div.transition()
@@ -139,7 +139,7 @@
     div.html(
     "State:"+d.stateName+"<br/>"+
     "Average Teacher Starting Salary%:"+d.avgTeacherStartingSalary+"<br/>"+
-    "Average SAT Scores:"+d.avgSATScore+"<br/>");
+    "Spending per Student:"+d.eduSpendingPerPupil+"<br/>");
 
     
     div.style("left",(d3.event.pageX+10) +"px")
