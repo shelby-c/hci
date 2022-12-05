@@ -46,7 +46,6 @@
   .range(xRange);
   
 
-  
   const yDomain=d3.extent(data.map(d=>d.scores));
   const yRange=[height,0];
   const yScale=d3.scaleLinear()
@@ -164,7 +163,7 @@
         }); 
 //      education = FileAttachment("/hci/education.csv").csv({typed: true})
 
-        console.log(avgTeacherStartingSalary)
+        console.log(data.avgTeacherStartingSalary)
         // Step 1 create a 2D array of tuples (x, y)
         /*var dataset1 = [
         [90, 20], [20, 100], [66, 44],
