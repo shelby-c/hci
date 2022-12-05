@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>GistRun</title>
+  <title>Shelby</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 </head>
@@ -14,19 +14,9 @@
     <a href="about.asp">About</a>
   </div>
   <div class='tooltip'></div>
-  <div class='legend'>
-    <div class='right-align'>
-      <div class='box' style='background:red'></div>
-      <div class='label'>west</div>
-      <div class='box' style='background:green'></div>
-      <div class='label' >east</div>
-      <div class='box' style='background:orange'></div>
-      <div class='label' >central</div>
-    </div>
-  </div>
   <svg width="800" height="800"></svg>
   <script>
-  education = d3.csv("/hci/education.csv")
+  d3.csv("/hci/education.csv")
           .row(function(data){
             return {
               stateName: data.stateName,
@@ -58,7 +48,7 @@
   const height=svgHeight-(margin.top+margin.bottom);
   
   console.log("Data:",data);
-  const xDomain=d3.extent(data.map(d=>d.spending));
+  const xDomain=d3.extent(data.map(d=>d.avgTeacherStartingSalary));
   const xRange=[0,width];
   const xScale=d3.scaleLinear()
   .domain(xDomain)
@@ -66,7 +56,7 @@
   
 
   
-  const yDomain=d3.extent(data.map(d=>d.scores));
+  const yDomain=d3.extent(data.map(d=>d.avgSATScore));
   const yRange=[height,0];
   const yScale=d3.scaleLinear()
   .domain(yDomain)
@@ -122,12 +112,7 @@
   .append("g")
   .attr("class","circle-g")
   .attr("transform",`translate(${margin.left},${margin.top})`);
-  
-  const color={
-    "2018":"red",
-    "2019":"green",
-    "2020":"orange"
-  }
+
   
   const div=d3.select(".tooltip");
   
@@ -137,20 +122,18 @@
   .enter()
   .append("circle")
   .attr("class","circle")
-  .attr("cx",d=>xScale(d.spending))
-  .attr("cy",d=>yScale(d.scores))
+  .attr("cx",d=>xScale(d.avgTeacherStartingSalary))
+  .attr("cy",d=>yScale(d.avgSATScore))
   .attr("r",5)
-  .style("fill",d=>color[d3.timeFormat("%Y")(new Date(d.date))])
   .on("mouseover",function(d){
     div.transition()
     .duration(200)
     .style("opacity",0.9);
     
     div.html(
-    "state:"+d.state+"<br/>"+
-    "grad%:"+d.gradpercent+"<br/>"+
-    "spending: $ "+d.spending+"<br/>"+
-    "scores:"+d.scores+"<br/>");
+    "State:"+d.stateName+"<br/>"+
+    "Average Teacher Starting Salary%:"+d.avgTeacherStartingSalary+"<br/>"+
+    "Average SAT Scores:"+d.avgSATScore+"<br/>");
 
     
     div.style("left",(d3.event.pageX+10) +"px")
