@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="utf-8">
+<title>US States By Race</title>
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<style type="text/css">
-
+<style>
 /* This code was modified and guided by https://gist.github.com/michellechandra/0b2ce4923dc9b5809922#file-us-states-json with changes made to acoomodate for project data */
 
 /* On mouse hover, lighten state color */
@@ -40,21 +38,14 @@ body {
 }
 
 </style>
-</head>
 <body>
-	<div class="topnav">
-		<a href="index.html">Home</a>
-		<a href="frank.html">Frank (TODO)</a>
-		<a href="shelby.html">Shelby (TODO)</a>
-		<a href="ayo.html"> Ayo(TODO)</a>
-		 <a href="ayo2.html"> Ayo2(TODO)</a>
-		<a href="sid.html"> Sid(TODO)</a>
-		<a href="about.asp">About</a>
-	  </div>
-<h1>
-US States By Education 
-</h1>
-<script type="text/javascript">
+	<h1>
+		TESTING
+	</h1>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script src="//d3js.org/topojson.v1.min.js"></script>
+	<script>
+	
 
 /*  This visualization was made possible by modifying code provided by:
 Scott Murray, Choropleth example from "Interactive Data Visualization for the Web" 
@@ -110,7 +101,6 @@ for (var i = 0; i < data.length; i++) {
 
 	// Grab State Name
 	var dataState = data[i].state;
-	console.log("dataState", dataState)
 
 	// Grab data value 
 	var dataValue = data[i].avgSATScore;
@@ -145,7 +135,7 @@ svg.selectAll("path")
     	div.transition()        
       	   .duration(200)      
 		   .style("opacity", .9);      
-                 div.html(
+           div.html(
 			  "State: " + d.properties.name + "<br/>" + 
 			   " Average SAT Score: " + d.properties.avgSATScore +  "<br/>" + 
 			   " Average Teacher Starting Salary: " + d.properties.avgTeacherStartingSalary +  "<br/>" + 
@@ -157,22 +147,22 @@ svg.selectAll("path")
            .style("top", (d3.event.pageY - 28) + "px");    
 	}) 
 	.style("fill", function(d)
-
 	{
-
-	// Get data value
-
-
 	if (d.properties.avgSATScore > 0 && d.properties.avgSATScore <= 600)  {
+		console.log("yesss1")
 		return "rgb(213,222,217)";
 	} else if (d.properties.avgSATScore > 600 && d.properties.avgSATScore <= 1000){
+		console.log("yesss")
 		return "rgb(69,173,168)";
 	} else if (d.properties.avgSATScore > 1000 && d.properties.avgSATScore <= 1200){
 		return "rgb(84,36,55)";
+		console.log("yesss")
 	} else if (d.properties.avgSATScore > 1200 && d.properties.avgSATScore <= 1400){
 		return "rgb(217,91,67)";
+		console.log("yesss")
 	} else if (d.properties.avgSATScore > 1400){
 		return "rgb(14,91,43)";
+		console.log("yesss")
 	} else{
 		return "rgb(0,10,15)";
 
@@ -209,3 +199,5 @@ var legend = d3.select("body").append("svg")
 </script>
 </body>
 </html>
+
+
