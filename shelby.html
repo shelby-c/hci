@@ -13,10 +13,11 @@
     <a href="shelby.html">Shelby (TODO)</a>
     <a href="about.asp">About</a>
   </div>
+
   <div class='tooltip'></div>
   <svg width="800" height="800"></svg>
   <script>
-  d3.csv("/hci/education.csv")
+  data = d3.csv("/hci/education.csv")
           .row(function(data){
             return {
               stateName: data.stateName,
