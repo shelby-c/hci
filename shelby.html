@@ -8,12 +8,11 @@
 </head>
 <body>
   <div class="topnav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="frank.html">Frank (TODO)</a></li>
-    <li><a href="shelby.html">Shelby (TODO)</a></li>
-    <li><a href="about.asp">About</a></li>
+    <a href="index.html">Home</a>
+    <a href="frank.html">Frank (TODO)</a>
+    <a href="shelby.html">Shelby (TODO)</a>
+    <a href="about.asp">About</a>
   </div>
-
   <div class='tooltip'></div>
   <div class='legend'>
     <div class='right-align'>
@@ -26,10 +25,24 @@
     </div>
   </div>
   <svg width="800" height="800"></svg>
-  <script src="script.js"></script>
-  <script src="script.js"></script>
   <script>
-  
+  education = d3.csv("/hci/education.csv")
+          .row(function(data){
+            return {
+              stateName: data.stateName,
+              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
+              avgSATScore: data.avgSATScore,
+              avgACTScore: data.avgACTScore,
+              NAEPScoreReading: data.NAEPScoreReading,
+              NAEPScoreMath: data.NAEPScoreMath,
+              highschoolGradRate: data.highschoolGradRate,
+              percentCompletingCollege: data.percentCompletingCollege,
+              eduSpendingPerPupil: data.eduSpendingPerPupil
+            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
+          })
+          .get(function(data) {
+          console.log(data);
+        }); 
   
   const svgWidth=800;
   const svgHeight=800;
