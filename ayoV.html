@@ -90,7 +90,7 @@ var div = d3.select("body")
 
 
 // Load in my states data!
-d3.csv("education.csv", function(data) {
+d3.csv("education2.csv", function(data) {
 color.domain([0,1,2,3,4]); // setting the range of the input data
 
 // Load GeoJSON data and merge with states data
@@ -100,7 +100,7 @@ d3.json("us-states.json", function(json) {
 for (var i = 0; i < data.length; i++) {
 
 	// Grab State Name
-	var dataState = data[i].stateName;
+	var dataState = data[i].state;
 
 	// Grab data value 
 	var dataValue = data[i].avgSATScore;
