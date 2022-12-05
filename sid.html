@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Shelby</title>
+  <title>Sid</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 </head>
@@ -43,6 +43,8 @@
         }); 
   console.log(data);
   */
+    
+   
   const svgWidth=800;
   const svgHeight=800;
   
@@ -100,7 +102,7 @@
   
   d3.select(".xAxis")
   .append("text")
-  .text("Average Teacher Starting Salary")
+  .text("State")
   .attr("x",width/2)
   .attr("y",margin.bottom * 0.7)
   .style("font-size","18px")
@@ -131,7 +133,7 @@
   .enter()
   .append("circle")
   .attr("class","circle")
-  .attr("cx",d=>xScale(d.avgTeacherStartingSalary))
+  .attr("cx",d=>xScale(d.stateName))
   .attr("cy",d=>yScale(d.eduSpendingPerPupil))
   .attr("r",5)
   .on("mouseover",function(d){
@@ -141,7 +143,6 @@
     
     div.html(
     "State: "+d.stateName+"<br/>"+
-    "Average Teacher Starting Salary: $"+d.avgTeacherStartingSalary+"<br/>"+
     "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
 
     
@@ -154,6 +155,8 @@
     .duration(500)
     .style("opacity",0);
      });
+  
+    
   
   
   </script>
