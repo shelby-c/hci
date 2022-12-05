@@ -22,29 +22,7 @@
   <script src="shelby.js"></script>
   <script src="shelby.js"></script>
   <script>
-/*
-  var data
-  d3.csv("/hci/education.csv")
-          .row(function(data){
-            return {
-              stateName: data.stateName,
-              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
-              avgSATScore: data.avgSATScore,
-              avgACTScore: data.avgACTScore,
-              NAEPScoreReading: data.NAEPScoreReading,
-              NAEPScoreMath: data.NAEPScoreMath,
-              highschoolGradRate: data.highschoolGradRate,
-              percentCompletingCollege: data.percentCompletingCollege,
-              eduSpendingPerPupil: data.eduSpendingPerPupil
-            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
-          })
-          .get(function(data) {
-          console.log(data);
-        }); 
-  console.log(data);
-  */
-    
-   
+
   const svgWidth=800;
   const svgHeight=800;
   
@@ -59,7 +37,7 @@
   const height=svgHeight-(margin.top+margin.bottom);
   
   console.log("Data:",data);
-  const xDomain=d3.extent(data.map(d=>d.avgTeacherStartingSalary));
+  const xDomain=d3.extent(data.map(d=>d.stateName));
   const xRange=[0,width];
   const xScale=d3.scaleLinear()
   .domain(xDomain)
