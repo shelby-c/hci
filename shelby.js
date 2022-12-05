@@ -108,7 +108,7 @@ const data = [
       "highschoolGradRate": 82,
       "percentCompletingCollege": 31.3,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },/*
     {
       "stateName": "Hawaii",
       "avgTeacherStartingSalary": 48428,
@@ -119,7 +119,7 @@ const data = [
       "highschoolGradRate": 85,
       "percentCompletingCollege": 33,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Idaho",
       "avgTeacherStartingSalary": 38015,
@@ -141,7 +141,7 @@ const data = [
       "highschoolGradRate": 86,
       "percentCompletingCollege": 34.7,
       "eduSpendingPerPupil": 17340.02105
-    },
+    },/*
     {
       "stateName": "Indiana",
       "avgTeacherStartingSalary": 37573,
@@ -152,7 +152,7 @@ const data = [
       "highschoolGradRate": 87,
       "percentCompletingCollege": 26.5,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Iowa",
       "avgTeacherStartingSalary": 37908,
@@ -185,7 +185,7 @@ const data = [
       "highschoolGradRate": 91,
       "percentCompletingCollege": 24.2,
       "eduSpendingPerPupil": 11396.83529
-    },
+    },/*
     {
       "stateName": "Louisiana",
       "avgTeacherStartingSalary": 41747,
@@ -207,7 +207,7 @@ const data = [
       "highschoolGradRate": 87,
       "percentCompletingCollege": 31.8,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Maryland",
       "avgTeacherStartingSalary": 47959,
@@ -295,7 +295,7 @@ const data = [
       "highschoolGradRate": 88,
       "percentCompletingCollege": 31.9,
       "eduSpendingPerPupil": 13004.147
-    },
+    },/*
     {
       "stateName": "Nevada",
       "avgTeacherStartingSalary": 40732,
@@ -306,7 +306,7 @@ const data = [
       "highschoolGradRate": 84,
       "percentCompletingCollege": 24.7,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "New Hampshire",
       "avgTeacherStartingSalary": 38990,
@@ -328,7 +328,7 @@ const data = [
       "highschoolGradRate": 91,
       "percentCompletingCollege": 39.7,
       "eduSpendingPerPupil": 20629.6443
-    },
+    },/*
     {
       "stateName": "New Mexico",
       "avgTeacherStartingSalary": 41214,
@@ -350,7 +350,7 @@ const data = [
       "highschoolGradRate": 83,
       "percentCompletingCollege": 36.6,
       "eduSpendingPerPupil": 25520.36024
-    },
+    },*/
     {
       "stateName": "North Carolina",
       "avgTeacherStartingSalary": 37049,
@@ -361,7 +361,7 @@ const data = [
       "highschoolGradRate": 87,
       "percentCompletingCollege": 31.3,
       "eduSpendingPerPupil": 9957.985473
-    },
+    },/*
     {
       "stateName": "North Dakota",
       "avgTeacherStartingSalary": 40106,
@@ -372,7 +372,7 @@ const data = [
       "highschoolGradRate": 88,
       "percentCompletingCollege": 30,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Ohio",
       "avgTeacherStartingSalary": 37569,
@@ -394,7 +394,7 @@ const data = [
       "highschoolGradRate": 85,
       "percentCompletingCollege": 25.5,
       "eduSpendingPerPupil": 9512.041651
-    },
+    }, /*
     {
       "stateName": "Oregon",
       "avgTeacherStartingSalary": 38280,
@@ -405,7 +405,7 @@ const data = [
       "highschoolGradRate": 80,
       "percentCompletingCollege": 33.7,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Pennsylvania",
       "avgTeacherStartingSalary": 46232,
@@ -427,7 +427,7 @@ const data = [
       "highschoolGradRate": 84,
       "percentCompletingCollege": 34.2,
       "eduSpendingPerPupil": 17024.14253
-    },
+    },/*
     {
       "stateName": "South Carolina",
       "avgTeacherStartingSalary": 37550,
@@ -438,7 +438,7 @@ const data = [
       "highschoolGradRate": 81,
       "percentCompletingCollege": 28.1,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "South Dakota",
       "avgTeacherStartingSalary": 39636,
@@ -449,7 +449,7 @@ const data = [
       "highschoolGradRate": 84,
       "percentCompletingCollege": 28.8,
       "eduSpendingPerPupil": 10233.78315
-    },
+    },/*
     {
       "stateName": "Tennessee",
       "avgTeacherStartingSalary": 38809,
@@ -482,7 +482,7 @@ const data = [
       "highschoolGradRate": 87,
       "percentCompletingCollege": 34,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Vermont",
       "avgTeacherStartingSalary": 40241,
@@ -515,7 +515,7 @@ const data = [
       "highschoolGradRate": 81,
       "percentCompletingCollege": 36,
       "eduSpendingPerPupil": 14555.71182
-    },
+    },/*
     {
       "stateName": "West Virginia",
       "avgTeacherStartingSalary": 37978,
@@ -537,7 +537,7 @@ const data = [
       "highschoolGradRate": 90,
       "percentCompletingCollege": 30.1,
       "eduSpendingPerPupil": "'NULL'"
-    },
+    },*/
     {
       "stateName": "Wyoming",
       "avgTeacherStartingSalary": 46558,
