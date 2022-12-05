@@ -17,7 +17,7 @@
   <div class='tooltip'></div>
   <svg width="800" height="800"></svg>
   <script>
-  d3.csv("/hci/education.csv")
+  const data = d3.csv("/hci/education.csv")
           .row(function(data){
             return {
               stateName: data.stateName,
@@ -32,7 +32,7 @@
             } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
           })
           .get(function(data) {
-          const data = console.log(data);
+          console.log(data);
         }); 
   
   const svgWidth=800;
