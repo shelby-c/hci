@@ -1,1 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shelby</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+</head>
+<body>
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="frank.html">Frank (TODO)</a>
+    <a href="shelby.html">Shelby (TODO)</a>
+    <a href="ayo.html"> Ayo(TODO)</a>
+    <a href="sid.html"> Ayo(TODO)</a>
+    <a href="about.asp">About</a>
+  </div>
 
+  <h1>Teacher salaries and spending per pupil by state</h1>
+  <div class='tooltip'></div>
+  <svg width="800" height="800"></svg>
+  <script src="shelby.js"></script>
+  <script src="shelby.js"></script>
+  <script>
+/*
+  var data
+  d3.csv("/hci/education.csv")
+          .row(function(data){
+            return {
+              stateName: data.stateName,
+              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
+              avgSATScore: data.avgSATScore,
+              avgACTScore: data.avgACTScore,
+              NAEPScoreReading: data.NAEPScoreReading,
+              NAEPScoreMath: data.NAEPScoreMath,
+              highschoolGradRate: data.highschoolGradRate,
+              percentCompletingCollege: data.percentCompletingCollege,
+              eduSpendingPerPupil: data.eduSpendingPerPupil
+            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
+          })
+          .get(function(data) {
+          console.log(data);
+        }); 
+  console.log(data);
+  */
+  const svgWidth=800;
+  const svgHeight=800;
+  
+  const margin={
+    top:100,
+    left:100,
+    bottom:50,
+    right:50
+  }
+  
+  const width=svgWidth-(margin.left+margin.right);
+  const height=svgHeight-(margin.top+margin.bottom);
+  
+  console.log("Data:",data);
+  const xDomain=d3.extent(data.map(d=>d.avgTeacherStartingSalary));
+  const xRange=[0,width];
+  const xScale=d3.scaleLinear()
+  .domain(xDomain)
+  .range(xRange);
+  
+
+  
+  const yDomain=d3.extent(data.map(d=>d.eduSpendingPerPupil));
+  const yRange=[height,0];
+  const yScale=d3.scaleLinear()
+  .domain(yDomain)
+  .range(yRange);
+  
+ 
+  const xAxis=d3.axisBottom(xScale);
+  const yAxis=d3.axisLeft(yScale);
+  
+  d3.select("svg")
+  .append("g")
+  .attr("class","xAxis")
+  .attr("transform",`translate(${margin.left},${svgHeight-margin.bottom})`);
+  
+  d3.select(".xAxis")
+  .append("g")
+  .call(xAxis.ticks(5).tickFormat(d=>'$'+d))
+  .selectAll("text")
+  .style("font-size","14px");
+  
+  
+  d3.select("svg")
+  .append("g")
+  .attr("class","yAxis")
+  .attr("transform",`translate(${margin.left},${margin.top})`);
+  
+  d3.select(".yAxis")
+  .append("g")
+  .call(yAxis.ticks(5).tickFormat(d=>'$'+d))
+   .selectAll("text")
+  .style("font-size","14px");
+  
+  d3.select(".xAxis")
+  .append("text")
+  .text("Average Teacher Starting Salary")
+  .attr("x",width/2)
+  .attr("y",margin.bottom * 0.7)
+  .style("font-size","18px")
+  .style("font-weight","bold");
+  
+  
+  d3.select(".yAxis")
+  .append("text")
+  .text("Per Pupil Spending")
+  .style("transform","rotate(270deg)")
+  .attr("x",height/2 * -1)
+  .attr("y",margin.left * 0.6 * -1)
+  .style("font-size","18px")
+  .style("font-weight","bold");
+  
+  
+  d3.select("svg")
+  .append("g")
+  .attr("class","circle-g")
+  .attr("transform",`translate(${margin.left},${margin.top})`);
+
+  
+  const div=d3.select(".tooltip");
+  
+  d3.select(".circle-g")
+  .selectAll(".circle")
+  .data(data)
+  .enter()
+  .append("circle")
+  .attr("class","circle")
+  .attr("cx",d=>xScale(d.avgTeacherStartingSalary))
+  .attr("cy",d=>yScale(d.eduSpendingPerPupil))
+  .attr("r",5)
+  .on("mouseover",function(d){
+    div.transition()
+    .duration(200)
+    .style("opacity",0.9);
+    
+    div.html(
+    "State: "+d.stateName+"<br/>"+
+    "Average Teacher Starting Salary: $"+d.avgTeacherStartingSalary+"<br/>"+
+    "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
+
+    
+    div.style("left",(d3.event.pageX+10) +"px")
+    .style("top",(d3.event.pageY-30) +"px")
+    
+  })
+  .on("mouseout",function(d){
+    div.transition()
+    .duration(500)
+    .style("opacity",0);
+     });
+  
+  
+  </script>
+</body>
+</html>
