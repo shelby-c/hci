@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>US States By Race</title>
+<style>
+
+.land {
+  fill: #fff;
+  stroke: #ccc;
+}
+
+.state {
+  fill: #ccc;
+  stroke: #666;
+}
+
+</style>
+<body>
+  <h1>
+    US States By Population By Race
+  </h1>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+
+    <form>
+      <label><input type="radio" name="race" id="asian"> Asian</label>
+      <label><input type="radio" name="race" id="white"> White</label>
+      <label><input type="radio" name="race" id="black"> Black</label>
+      <label><input type="radio" name="race" id="indigenous" checked> Indigienous</label>
+	  <label><input type="radio" name="race" id="hispanicOrLatino"> Hispanic or Latino</label>
+	  <label><input type="radio" name="race" id="notHispanicOrLatino"> Not Hispanic or Latino</label>
+	  <label><input type="radio" name="race" id="other"> Other</label>
+  </form>
+
+<script>
+
+
+
+var path = d3.geo.path();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", 960)
+    .attr("height", 500);
+
+
+var color = d3.scale.linear()
+    .range(['white', 'red', 'fuchsia', 'purple','black']);
+var stuff = []
+
+d3.tsv('demographics.tsv', function(data){
+    stuff.push(data)
+    var scale = d3.extent(data, function(x){return +x.white})
+    var scale = scale.concat(d3.extent(data, function(x){return +x.black}))
+    var scale = scale.concat(d3.extent(data, function(x){return +x.asian}))
+    var scale = scale.concat(d3.extent(data, function(x){return +x.indigenous}))
+	var scale = scale.concat(d3.extent(data, function(x){return +x.other}))
+	var scale = scale.concat(d3.extent(data, function(x){return +x.hispanicOrLatino}))
+	var scale = scale.concat(d3.extent(data, function(x){return +x.notHispanicOrLatino}))
+    color.domain(d3.extent(scale))
+
+});
+
+getinfo = function(x){
+  return stuff[0].filter(function(z){return String(z.id) == x});
+};
+
+
+d3.json("us.json", function(error, us) {
+  if (error) throw error;
+
+// this part makes the full map
+  svg.append("path")
+      .datum(topojson.feature(us, us.objects.land))
+      .attr("class", "land")
+      .attr("d", path);
+
+
+// modify the json so it has the info you need in the actual object
+
+var all_states = topojson.feature(us, us.objects.states).features;
+all_states.forEach(function(d){d.info = getinfo(d.id)[0]});
+var all_states = all_states.filter(function(d){return d.info != undefined});
+all_states.forEach(function(d){d.state = d.info.state});
+
+//make the states
+
+  svg.selectAll(".state")
+      .data(all_states)
+      .enter().append("path")
+      .attr("class", "state")
+      .attr("d", path);
+
+// label the states
+ svg.selectAll("text")
+    .data(all_states)
+    .enter()
+    .append("svg:text")
+    .text(function(d){return d.info.state})
+    .attr("x", function(d){
+        return path.centroid(d)[0];
+    })
+    .attr("y", function(d){
+        return  path.centroid(d)[1];
+    })
+    .attr("text-anchor","middle")
+    .attr('font-size','6pt');
+
+  });
+
+
+var asians = function(){
+  d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(d.info.asian)});
+};
+
+var whites = function(){
+  d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(+d.info.white)});
+};
+
+var blacks = function(){
+d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(+d.info.black)});
+};
+
+var indig = function(){
+d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(+d.info.indigenous)});
+};
+
+var other = function(){
+d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(+d.info.other)});
+};
+
+var hispanic = function(){
+d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(+d.info.hispanicOrLatino)});
+};
+
+var notHispanic = function(){
+d3.selectAll('.state').transition().duration(800).style('fill',function(d){return color(+d.info.notHispanicOrLatino)});
+};
+
+d3.selectAll('#asian').on('change', asians);
+d3.selectAll('#white').on('change', whites);
+d3.selectAll('#black').on('change', blacks);
+d3.selectAll('#indigenous').on('change', indig);
+d3.selectAll('#other').on('change', other);
+d3.selectAll('#hispanicOrLatino').on('change', hispanic);
+d3.selectAll('#notHispanicOrLatino').on('change', notHispanic);
+
+
+
+
+
+</script>
