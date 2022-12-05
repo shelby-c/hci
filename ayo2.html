@@ -43,7 +43,7 @@ body {
 </head>
 <body>
 <h1>
-	US States By Education Statistics
+US States By Education 
 </h1>
 <script type="text/javascript">
 
@@ -136,16 +136,13 @@ svg.selectAll("path")
     	div.transition()        
       	   .duration(200)      
 		   .style("opacity", .9);      
-           div.text(
-			  "State: " + d.properties.name + " " + 
-			   " Average SAT Score: " + d.properties.avgSATScore +  
-			   " Average Teacher Starting Salary: " + d.properties.avgTeacherStartingSalary +  
-			   " Average ACT Score: " + d.properties.avgACTScore + 
-			   " NAEPScoreReading: " + d.properties.NAEPScoreReading + 
+                 div.html(
+			  "State: " + d.properties.name + "<br/>" + 
+			   " Average SAT Score: " + d.properties.avgSATScore +  "<br/>" + 
+			   " Average Teacher Starting Salary: " + d.properties.avgTeacherStartingSalary +  "<br/>" + 
+			   " Average ACT Score: " + d.properties.avgACTScore + "<br/>" + 
+			   " NAEPScoreReading: " + d.properties.NAEPScoreReading + "<br/>" + 
 			   " NAEPScoreMath: " + d.properties.NAEPScoreMath
-			   
-			 
-			 
 			   )
            .style("left", (d3.event.pageX) + "px")     
            .style("top", (d3.event.pageY - 28) + "px");    
