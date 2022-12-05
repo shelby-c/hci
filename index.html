@@ -145,6 +145,33 @@
      });
   
 
+     education = d3.csv("/hci/education.csv")
+          .row(function(data){
+            return {
+              stateName: data.stateName,
+              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
+              avgSATScore: data.avgSATScore,
+              avgACTScore: data.avgACTScore,
+              NAEPScoreReading: data.NAEPScoreReading,
+              NAEPScoreMath: data.NAEPScoreMath,
+              highschoolGradRate: data.highschoolGradRate,
+              percentCompletingCollege: data.percentCompletingCollege,
+              eduSpendingPerPupil: data.eduSpendingPerPupil
+            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
+          })
+          .get(function(data) {
+          console.log(data);
+        }); 
+//      education = FileAttachment("/hci/education.csv").csv({typed: true})
+
+        console.log(avgTeacherStartingSalary)
+        // Step 1 create a 2D array of tuples (x, y)
+        /*var dataset1 = [
+        [90, 20], [20, 100], [66, 44],
+        [53, 80], [24, 182], [80, 72],
+        [10, 76], [33, 150], [100, 15]
+        ];*/
+        var dataset = [d => d.avgTeacherStartingSalary, d => d.avgSATScore]
   
   </script>
 </body>
@@ -180,9 +207,9 @@
         [10, 76], [33, 150], [100, 15]
         ];*/
         var dataset = [d => d.avgTeacherStartingSalary, d => d.avgSATScore]
-
         
-
+        
+/*
         // Step 3
         var svg = d3.select("svg"),
             margin = 200,
@@ -241,7 +268,7 @@
         .attr("cy", function (d) { return yScale(d[1]); } )
         .attr("r", 2)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
-        .style("fill", "#CC0000");
+        .style("fill", "#CC0000");*/
  
       </script>
 </body>
