@@ -17,7 +17,7 @@
         <a href="about.asp">About</a>
     </div>
 
-  <h1>Teacher salaries and spending per pupil by state</h1>
+  <h1>College graduation and spending per pupil by state</h1>
   <div class='tooltip'></div>
   <svg width="800" height="800"></svg>
   <script src="shelby.js"></script>
@@ -59,7 +59,7 @@
   
   d3.select(".xAxis")
   .append("g")
-  .call(xAxis.ticks(5).tickFormat(d=>'$'+d))
+  .call(xAxis.ticks(5).tickFormat(d=>''+d))
   .selectAll("text")
   .style("font-size","14px");
   
@@ -114,7 +114,7 @@
     
   div.html(
     "State: "+d.stateName+"<br/>"+
-    "College Graduation Rate: "+d.percentCompletingCollege+"$<br/>"+
+    "College Graduation Rate: "+d.percentCompletingCollege+"%<br/>"+
     "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
     
     div.style("left",(d3.event.pageX+10) +"px")
