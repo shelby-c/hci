@@ -69,12 +69,14 @@ ul {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Add a color to the active/current link */
