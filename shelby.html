@@ -59,7 +59,7 @@
   
   d3.select(".xAxis")
   .append("g")
-  .call(xAxis.ticks(5).tickFormat(d=>''+d))
+  .call(xAxis.ticks(5).tickFormat(d=>+d+'%'))
   .selectAll("text")
   .style("font-size","14px");
   
