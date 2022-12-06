@@ -37,7 +37,7 @@
   const height=svgHeight-(margin.top+margin.bottom);
   
   console.log("Data:",data);
-  const xDomain=d3.extent(data.map(d=>d.avgTeacherStartingSalary));
+  const xDomain=d3.extent(data.map(d=>d.gradpercent));
   const xRange=[0,width];
   const xScale=d3.scaleLinear()
   .domain(xDomain)
@@ -76,7 +76,7 @@
   
   d3.select(".xAxis")
   .append("text")
-  .text("Average Teacher Starting Salary")
+  .text("College Graduation rates")
   .attr("x",width/2)
   .attr("y",margin.bottom * 0.7)
   .style("font-size","18px")
@@ -104,7 +104,7 @@
   .enter()
   .append("circle")
   .attr("class","circle")
-  .attr("cx",d=>xScale(d.avgTeacherStartingSalary))
+  .attr("cx",d=>xScale(d.gradpercent))
   .attr("cy",d=>yScale(d.eduSpendingPerPupil))
   .attr("r",5)
   .on("mouseover",function(d){
@@ -114,7 +114,7 @@
     
   div.html(
     "State: "+d.stateName+"<br/>"+
-    "Average Teacher Starting Salary: $"+d.avgTeacherStartingSalary+"<br/>"+
+    "College Graduation Rate: "+d.gradpercent+"$<br/>"+
     "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
     
     div.style("left",(d3.event.pageX+10) +"px")
