@@ -1,0 +1,52 @@
+state,eduSpendingPerPupil,id
+Alabama,10116,1
+Alaska,18313,2
+Arizona,8766,4
+Arkansas,10345,5
+California,14053,6
+Colorado,11540,8
+Connecticut,21346,9
+Delaware,14757,10
+DistrictofColumbia,'NULL',11
+Florida,9937,12
+Georgia, 'NULL',13
+Hawaii,'NULL',15
+Idaho,8272,16
+Illinois,17340,17
+Indiana,'NULL',18
+Iowa,11958,19
+Kansas,12697,20
+Kentucky,11397,21
+Louisiana,'NULL',22
+Maine,'NULL',23
+Maryland ,14644,24
+Massachusetts,18269,25
+Michigan,13072,26
+Minnesota,13603,27
+Mississippi,9654,28
+Missouri,11249,29
+Montana,12105,30
+Nebraska,13004,31
+Nevada,'NULL',32
+New Hampshire,18952,33
+New Jersey,20630,34
+New Mexico,'NULL',35
+New York,25520,36
+North Carolina,9958,37
+North Dakota,'NULL',38
+Ohio,13805,39
+Oklahoma,9512,40
+Oregon,'NULL',41
+Pennsylvania,17142,42
+Rhode Island,17024,44
+South Carolina,10234,45
+South Dakota,'NULL' ,46
+Tennessee,'NULL',47
+Texas,'NULL',48
+Utah,'NULL',49
+Vermont,21314,50
+Virginia,12905,51
+Washington,14556,53
+West Virginia,'NULL',54
+Wisconsin,'NULL',55
+Wyoming,16698,56
