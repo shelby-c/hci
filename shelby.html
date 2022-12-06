@@ -23,27 +23,6 @@
   <script src="shelby.js"></script>
   <script src="shelby.js"></script>
   <script>
-/*
-  var data
-  d3.csv("/hci/education.csv")
-          .row(function(data){
-            return {
-              stateName: data.stateName,
-              avgTeacherStartingSalary: data.avgTeacherStartingSalary,
-              avgSATScore: data.avgSATScore,
-              avgACTScore: data.avgACTScore,
-              NAEPScoreReading: data.NAEPScoreReading,
-              NAEPScoreMath: data.NAEPScoreMath,
-              highschoolGradRate: data.highschoolGradRate,
-              percentCompletingCollege: data.percentCompletingCollege,
-              eduSpendingPerPupil: data.eduSpendingPerPupil
-            } // does this mean we can use stateName, avgTeacherStartingSalary, etc. as variables?
-          })
-          .get(function(data) {
-          console.log(data);
-        }); 
-  console.log(data);
-  */
   const svgWidth=800;
   const svgHeight=800;
   
@@ -64,15 +43,12 @@
   .domain(xDomain)
   .range(xRange);
   
-
-  
   const yDomain=d3.extent(data.map(d=>d.eduSpendingPerPupil));
   const yRange=[height,0];
   const yScale=d3.scaleLinear()
   .domain(yDomain)
   .range(yRange);
   
- 
   const xAxis=d3.axisBottom(xScale);
   const yAxis=d3.axisLeft(yScale);
   
@@ -86,7 +62,6 @@
   .call(xAxis.ticks(5).tickFormat(d=>'$'+d))
   .selectAll("text")
   .style("font-size","14px");
-  
   
   d3.select("svg")
   .append("g")
@@ -107,7 +82,6 @@
   .style("font-size","18px")
   .style("font-weight","bold");
   
-  
   d3.select(".yAxis")
   .append("text")
   .text("Per Pupil Spending")
@@ -117,12 +91,10 @@
   .style("font-size","18px")
   .style("font-weight","bold");
   
-  
   d3.select("svg")
   .append("g")
   .attr("class","circle-g")
   .attr("transform",`translate(${margin.left},${margin.top})`);
-
   
   const div=d3.select(".tooltip");
   
@@ -140,23 +112,20 @@
     .duration(200)
     .style("opacity",0.9);
     
-    div.html(
+  div.html(
     "State: "+d.stateName+"<br/>"+
     "Average Teacher Starting Salary: $"+d.avgTeacherStartingSalary+"<br/>"+
     "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
-
     
     div.style("left",(d3.event.pageX+10) +"px")
     .style("top",(d3.event.pageY-30) +"px")
-    
   })
+
   .on("mouseout",function(d){
     div.transition()
     .duration(500)
     .style("opacity",0);
      });
-  
-  
   </script>
 </body>
 </html>
