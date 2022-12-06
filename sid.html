@@ -36,7 +36,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://github.com/shelby-c/hci/blob/main/education.csv", function(data) {
+d3.csv("education.csv", function(data) {
 
 // X axis
 var x = d3.scaleBand()
