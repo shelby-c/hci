@@ -84,3 +84,8 @@ ul {
   background-color: #04AA6D;
   color: white;
 }
+
+.content {
+  max-width: 500px;
+  margin: auto;
+}
