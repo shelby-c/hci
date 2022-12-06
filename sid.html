@@ -72,14 +72,6 @@ svg.selectAll("mybar")
     .attr("height", function(d) { return height - y(d.eduSpendingPerPupil); })
     .attr("fill", "#69b3a2")
   
-  // Animation
-svg.selectAll("rect")
-  .transition()
-  .duration(800)
-  .attr("y", function(d) { return y(d.Value); })
-  .attr("height", function(d) { return height - y(d.Value); })
-  .delay(function(d,i){console.log(i) ; return(i*100)})
-
 
 })
 
