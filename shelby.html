@@ -37,13 +37,13 @@
   const height=svgHeight-(margin.top+margin.bottom);
   
   console.log("Data:",data);
-  const xDomain=d3.extent(data.map(d=>d.percentCompletingCollege));
+  const xDomain=d3.extent(data.map(d=>d.eduSpendingPerPupil));
   const xRange=[0,width];
   const xScale=d3.scaleLinear()
   .domain(xDomain)
   .range(xRange);
   
-  const yDomain=d3.extent(data.map(d=>d.eduSpendingPerPupil));
+  const yDomain=d3.extent(data.map(d=>d.percentCompletingCollege));
   const yRange=[height,0];
   const yScale=d3.scaleLinear()
   .domain(yDomain)
@@ -59,7 +59,7 @@
   
   d3.select(".xAxis")
   .append("g")
-  .call(xAxis.ticks(5).tickFormat(d=>+d+'%'))
+  .call(xAxis.ticks(5).tickFormat(d=>'$'+d))
   .selectAll("text")
   .style("font-size","14px");
   
@@ -70,13 +70,13 @@
   
   d3.select(".yAxis")
   .append("g")
-  .call(yAxis.ticks(5).tickFormat(d=>'$'+d))
+  .call(yAxis.ticks(5).tickFormat(d=>+d+'%'))
    .selectAll("text")
   .style("font-size","14px");
   
   d3.select(".xAxis")
   .append("text")
-  .text("College Graduation rates")
+  .text("Per Pupil Spending")
   .attr("x",width/2)
   .attr("y",margin.bottom * 0.7)
   .style("font-size","18px")
@@ -84,7 +84,7 @@
   
   d3.select(".yAxis")
   .append("text")
-  .text("Per Pupil Spending")
+  .text("College Graduation rates")
   .style("transform","rotate(270deg)")
   .attr("x",height/2 * -1)
   .attr("y",margin.left * 0.6 * -1)
@@ -104,8 +104,8 @@
   .enter()
   .append("circle")
   .attr("class","circle")
-  .attr("cx",d=>xScale(d.percentCompletingCollege))
-  .attr("cy",d=>yScale(d.eduSpendingPerPupil))
+  .attr("cx",d=>xScale(d.eduSpendingPerPupil))
+  .attr("cy",d=>yScale(d.percentCompletingCollege))
   .attr("r",5)
   .on("mouseover",function(d){
     div.transition()
@@ -114,8 +114,8 @@
     
   div.html(
     "State: "+d.stateName+"<br/>"+
-    "College Graduation Rate: "+d.percentCompletingCollege+"%<br/>"+
-    "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
+    "College Graduation Rate: "+d.eduSpendingPerPupil+"%<br/>"+
+    "Spending per Student:$"+d.percentCompletingCollege+"<br/>");
     
     div.style("left",(d3.event.pageX+10) +"px")
     .style("top",(d3.event.pageY-30) +"px")
