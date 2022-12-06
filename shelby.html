@@ -37,7 +37,7 @@
   const height=svgHeight-(margin.top+margin.bottom);
   
   console.log("Data:",data);
-  const xDomain=d3.extent(data.map(d=>d.gradpercent));
+  const xDomain=d3.extent(data.map(d=>d.percentCompletingCollege));
   const xRange=[0,width];
   const xScale=d3.scaleLinear()
   .domain(xDomain)
@@ -104,7 +104,7 @@
   .enter()
   .append("circle")
   .attr("class","circle")
-  .attr("cx",d=>xScale(d.gradpercent))
+  .attr("cx",d=>xScale(d.percentCompletingCollege))
   .attr("cy",d=>yScale(d.eduSpendingPerPupil))
   .attr("r",5)
   .on("mouseover",function(d){
@@ -114,7 +114,7 @@
     
   div.html(
     "State: "+d.stateName+"<br/>"+
-    "College Graduation Rate: "+d.gradpercent+"$<br/>"+
+    "College Graduation Rate: "+d.percentCompletingCollege+"$<br/>"+
     "Spending per Student:$"+d.eduSpendingPerPupil+"<br/>");
     
     div.style("left",(d3.event.pageX+10) +"px")
